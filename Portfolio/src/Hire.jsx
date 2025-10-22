@@ -3,8 +3,8 @@ import { useState } from 'react';
 
 const Hire = () => {
   const [action, setAction] = useState('');
-  const [statusMessage, setStatusMessage] = useState(''); // ✅ for success/error message
-  const [statusType, setStatusType] = useState(''); // ✅ to style (success/error)
+  const [statusMessage, setStatusMessage] = useState('');
+  const [statusType, setStatusType] = useState('');
 
   const move = () => {
     setAction('active');
@@ -13,54 +13,53 @@ const Hire = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
 
+    // 🧩 Extract form data
     const formData = new FormData(event.target);
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
+    const { name, email, subject, message } = Object.fromEntries(formData);
 
     try {
+      // 📨 Send POST request to backend API
       const response = await fetch("/api/contact", {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, subject, message }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        setStatusMessage('✅ Message sent! I’ll get back to you soon.');
-        setStatusType('success');
-        console.log('Success:', data);
-        event.target.reset();
+        setStatusMessage("✅ Message sent! I’ll get back to you soon.");
+        setStatusType("success");
+        console.log("Success:", data);
+        event.target.reset(); // clear form fields
       } else {
-        setStatusMessage('❌ Message failed to send. Please try again.');
-        setStatusType('error');
-        console.error('Server Error:', data);
+        setStatusMessage("❌ Message failed to send. Please try again.");
+        setStatusType("error");
+        console.error("Server Error:", data);
       }
     } catch (error) {
-      setStatusMessage('⚠️ Could not connect to the server.');
-      setStatusType('error');
-      console.error('Network Error:', error);
+      setStatusMessage("⚠️ Could not connect to the server.");
+      setStatusType("error");
+      console.error("Network Error:", error);
     }
   };
 
   return (
     <div className="hire-section">
       <div className="container">
-        {/* Background Design */}
+        {/* === Background Design === */}
         <div className="background-design">
-          <div className="circle-bg"></div>
-          <div className="circle-bg"></div>
-          <div className="circle-bg"></div>
-          <div className="circle-bg"></div>
-          <div className="circle-bg"></div>
-          <div className="circle-bg"></div>
+          {[...Array(6)].map((_, i) => (
+            <div key={i} className="circle-bg"></div>
+          ))}
           <div className="bg-grid"></div>
           <div className="bg-dots"></div>
         </div>
 
+        {/* === Glowing Orb === */}
         <div className="orb"></div>
 
-        {/* Particles */}
+        {/* === Floating Particles === */}
         {[...Array(125)].map((_, i) => (
           <div
             key={i}
@@ -73,7 +72,7 @@ const Hire = () => {
           ></div>
         ))}
 
-        {/* Contact Form */}
+        {/* === Contact Form === */}
         <div className={`wrapper ${action}`}>
           <div className="form-box">
             <form onSubmit={onSubmit}>
@@ -112,7 +111,7 @@ const Hire = () => {
               {statusMessage && (
                 <p
                   className={`status-message ${
-                    statusType === 'success' ? 'success' : 'error'
+                    statusType === "success" ? "success" : "error"
                   }`}
                 >
                   {statusMessage}
@@ -127,5 +126,6 @@ const Hire = () => {
 };
 
 export default Hire;
+
 
 
