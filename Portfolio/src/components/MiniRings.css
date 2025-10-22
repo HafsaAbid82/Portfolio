@@ -1,0 +1,51 @@
+.mini-rings {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+/* Small spinning rings */
+.mini-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px dashed #1f043b;
+    box-shadow: 0 0 20px rgba(6, 6, 30, 0.8);
+    mix-blend-mode: screen;
+    animation: spin 8s linear infinite;
+}
+
+/* Outer ring */
+.mini-ring-1 {
+    width: 90px;
+    height: 90px;
+    animation-duration: 18s;
+}
+
+/* Inner ring */
+.mini-ring-2 {
+    width: 70px;
+    height: 70px;
+    animation-duration: 20s;
+    animation-direction: reverse;
+}
+
+/* Add a subtle hover effect */
+.timeline-icon:hover .mini-ring {
+    border-color: #6a00ff;
+    box-shadow: 0 0 25px rgba(102, 0, 255, 0.3),
+        0 0 50px rgba(1, 169, 192, 0.2);
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

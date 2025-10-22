@@ -1,0 +1,217 @@
+/* About.css */
+.about-section {
+    background: #000001;
+    min-height: 100vh;
+    width: 100vw;
+    margin-top: 70px;
+    margin-left: -8px;
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background design elements */
+.background-design {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.1;
+    filter: blur(40px);
+    animation: float 15s infinite ease-in-out;
+}
+
+.bg-circle-1 {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, #6a00ff, #00e1ff3e);
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.bg-circle-2 {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(225deg, #3a00ff, #00bbff3c);
+    bottom: 15%;
+    right: 10%;
+    animation-delay: -5s;
+}
+
+.bg-circle-3 {
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(225deg, #7b00ff, #0066ff);
+    top: 50%;
+    left: 80%;
+    animation-delay: -10s;
+}
+
+.bg-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(208, 208, 253, 0.136) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(188, 188, 254, 0.165) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: center center;
+    opacity: 0.25;
+    mask-image: radial-gradient(circle at center, black 20%, transparent 80%);
+    -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 70%);
+}
+
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+.timeline-content-wrapper {
+    position: relative;
+    z-index: 2;
+}
+
+.timeline-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 80px;
+    position: relative;
+    width: 100%;
+}
+
+.timeline-item:nth-child(odd) {
+    flex-direction: row;
+}
+
+.timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.timeline-icon {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    flex-shrink: 0;
+}
+
+.timeline-icon img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    z-index: 2;
+    position: relative;
+}
+
+.timeline-content {
+    background: rgba(26, 26, 46, 0.8);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    width: 40%;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+    position: relative;
+    border: 1px solid rgba(106, 106, 255, 0.1);
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    margin-left: 40px;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    margin-right: 40px;
+    text-align: right;
+}
+
+.timeline-content h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.4rem;
+    color: #6a6aff;
+    font-weight: 600;
+}
+
+.timeline-content h4 {
+    margin: 0 0 12px 0;
+    font-size: 1rem;
+    color: #a0a0dd;
+    font-weight: 500;
+}
+
+.timeline-content p {
+    margin: 0;
+    line-height: 1.6;
+    color: #e0e0ff;
+    font-size: 0.95rem;
+}
+
+/* Responsive design */
+@media (max-width: 900px) {
+    .timeline-line {
+        left: 40px;
+    }
+
+    .timeline-item {
+        flex-direction: row !important;
+        justify-content: flex-start;
+        margin-bottom: 60px;
+    }
+
+    .timeline-content {
+        width: 70%;
+        margin-left: 60px !important;
+        margin-right: 0 !important;
+        text-align: left !important;
+    }
+
+    .timeline-icon {
+        margin-right: 20px;
+    }
+
+    .bg-circle {
+        display: none;
+        /* Hide animated circles on mobile for performance */
+    }
+}
+
+@media (max-width: 600px) {
+    .about-section {
+        padding: 60px 15px;
+    }
+
+    .timeline-content {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .timeline-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .timeline-icon img {
+        width: 30px;
+        height: 30px;
+    }
+}

@@ -1,0 +1,447 @@
+/* ====== GLOBAL RESET ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Share Tech Mono', 'Courier New', monospace;
+}
+
+/* ====== SECTION LAYOUT ====== */
+.hire-section {
+  position: relative;
+  background: black;
+  color: #fff;
+  min-height: 100vh;
+  width: 100vw;
+  padding: 20px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 2;
+}
+/* ====== CONTAINER ====== */
+.container {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  z-index: 3;
+  width: 100%;
+ 
+}
+
+ .wrapper {
+  opacity: 1;
+  z-index: 2;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  position: relative;
+    background: rgba(20, 20, 40, 0.15);
+    width: 450px;
+    border-radius: 20px;
+    overflow: hidden;
+    backdrop-filter: blur(25px) saturate(200%);
+    -webkit-backdrop-filter: blur(25px) saturate(200%);
+    border: 1px dashed rgba(55, 43, 115, 0.6);
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.3),
+        inset 0 0 30px rgba(100, 80, 200, 0.15),
+        0 0 40px rgba(0, 247, 255, 0.05);
+    transition: all 0.5s ease;
+}
+
+.wrapper .form-box {
+  width: 100%;
+  padding: 60px 30px;
+  text-align: center;
+}
+.status-message {
+  margin-top: 15px;
+  font-size: 14px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.status-message.success {
+  color: #ffffff;
+}
+
+.status-message.error {
+  color: #ff5555;
+}
+
+form h3 {
+  font-size: 26px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 25px;
+  letter-spacing: 2px;
+  position: relative;
+}
+
+form h3::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, #6a00ff, #00e1ff);
+}
+.input-box, .textarea {
+  position: relative;
+  margin: 25px 0;
+}
+
+.input-box input,
+textarea {
+  width: 100%;
+  border: 1px dashed rgba(106,0,255,0.3);
+  background: rgba(255,255,255,0.03);
+  border-radius: 25px;
+  padding: 14px 20px;
+  color: #fff;
+  outline: none;
+  transition: 0.3s;
+}
+
+.input-box input:focus,
+textarea:focus {
+  border: 1px dashed rgba(96, 96, 96, 0.3);
+  box-shadow: 0 0 15px rgba(111, 94, 135, 0.4);
+}
+
+textarea {
+  height: 150px;
+  resize: none;
+}
+
+/* Floating labels */
+.input-box label {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  font-size: 15px;
+  color: rgba(255,255,255,0.6);
+  transition: 0.3s;
+  background: transparent;
+  pointer-events: none;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
+  top: -8px;
+  left: 20px;
+  font-size: 12px;
+  color: #ffffff;
+}
+form button,
+.overlay-btn {
+  background: rgba(100, 80, 200, 0.25);
+  border: 1px dashed #372b73;
+  width: 100%;
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.35s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  backdrop-filter: blur(6px);
+  position: relative;
+  overflow: hidden;
+}
+
+/* animated light sweep */
+form button::before,
+.overlay-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(100, 80, 200, 0.25), transparent);
+  transition: left 0.5s ease;
+}
+
+form button:hover::before,
+.overlay-btn:hover::before {
+  left: 100%;
+}
+
+/* glowing hover animation */
+form button:hover,
+.overlay-btn:hover {
+  background: rgba(100, 80, 200, 0.4);
+  transform: translateY(-3px);
+  box-shadow:
+    0 0 15px rgba(100, 80, 200, 0.3),
+    0 0 30px rgba(43, 0, 255, 0.2);
+}
+
+/* active press feedback */
+form button:active,
+.overlay-btn:active {
+  transform: scale(0.97);
+  box-shadow: 0 0 8px rgba(100, 80, 200, 0.25);
+}
+
+
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .wrapper, .wrapper1, .work {
+    width: 320px;
+    height: auto;
+    border-radius: 20px;
+  }
+}
+.circle-bg {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px dashed #372b73;
+    z-index: -1;
+}
+
+.circle-bg:nth-child(1) {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: 5%;
+    animation: rotate 40s linear infinite;
+}
+
+.circle-bg:nth-child(2) {
+    width: 300px;
+    height: 300px;
+    top: 55%;
+    left: 55%;
+    animation: rotate 60s linear infinite reverse;
+}
+
+.circle-bg:nth-child(3) {
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    left: 80%;
+    animation: rotate 30s linear infinite;
+}
+/* ====== ENHANCED 3D BACKGROUND DESIGN ====== */
+.background-design {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* 3D Floating Geometric Shapes */
+.circle-bg {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(55, 43, 115, 0.6);
+  z-index: 1;
+  animation: float3d 20s ease-in-out infinite;
+}
+
+.circle-bg:nth-child(1) {
+  width: 300px;
+  height: 300px;
+  top: 10%;
+  left: 5%;
+  background: radial-gradient(circle, rgba(106, 0, 255, 0.1) 0%, transparent 70%);
+  animation-delay: 0s;
+  box-shadow: 0 0 80px rgba(106, 0, 255, 0.2);
+}
+
+.circle-bg:nth-child(2) {
+  width: 300px;
+  height: 300px;
+  top: 55%;
+  left: 55%;
+  background: radial-gradient(circle, rgba(60, 0, 255, 0.1) 0%, transparent 70%);
+  animation-delay: -5s;
+  box-shadow: 0 0 80px rgba(98, 0, 255, 0.2);
+}
+
+.circle-bg:nth-child(3) {
+  width: 200px;
+  height: 200px;
+  top: 50%;
+  left: 80%;
+  background: radial-gradient(circle, rgba(100, 80, 200, 0.15) 0%, transparent 70%);
+  animation-delay: -10s;
+  box-shadow: 0 0 60px rgba(100, 80, 200, 0.15);
+}
+
+.circle-bg:nth-child(4) {
+  width: 80px;
+  height: 80px;
+  top: 60%;
+  left: 2%;
+  background: radial-gradient(circle, rgba(106, 0, 255, 0.08) 0%, transparent 70%);
+  animation-delay: -7s;
+  box-shadow: 0 0 100px rgba(106, 0, 255, 0.15);
+}
+
+.circle-bg:nth-child(5) {
+  width: 50px;
+  height: 50px;
+  top: 20%;
+  left: 75%;
+  background: radial-gradient(circle, rgba(64, 0, 255, 0.08) 0%, transparent 70%);
+  animation-delay: -12s;
+  box-shadow: 0 0 70px rgba(102, 0, 255, 0.15);
+}
+
+.circle-bg:nth-child(6) {
+  width: 90px;
+  height: 90px;
+  top: 5%;
+  left: 60%;
+  background: radial-gradient(circle, rgba(100, 80, 200, 0.12) 0%, transparent 70%);
+  animation-delay: -15s;
+  box-shadow: 0 0 90px rgba(100, 80, 200, 0.2);
+}
+
+/* 3D Floating Animation */
+@keyframes float3d {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translate3d(20px, 30px, 50px) rotate(5deg) scale(1.05);
+  }
+  50% {
+    transform: translate3d(-15px, 40px, 30px) rotate(-3deg) scale(1.02);
+  }
+  75% {
+    transform: translate3d(25px, -20px, 70px) rotate(7deg) scale(1.08);
+  }
+}
+
+/* 3D Grid System */
+.bg-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(106, 0, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(106, 0, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  transform: perspective(500px) rotateX(60deg) translateZ(0);
+  animation: gridScroll 20s linear infinite;
+  z-index: 1;
+}
+
+@keyframes gridScroll {
+  0% {
+    transform: perspective(500px) rotateX(60deg) translateY(0) translateZ(0);
+  }
+  100% {
+    transform: perspective(500px) rotateX(60deg) translateY(50px) translateZ(0);
+  }
+}
+
+/* 3D Dots Pattern */
+.bg-dots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(rgba(47, 0, 255, 0.15) 2px, transparent 2px);
+  background-size: 80px 80px;
+  transform: perspective(300px) rotateX(75deg) translateZ(0);
+  animation: dotsFloat 25s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes dotsFloat {
+  0%, 100% {
+    transform: perspective(300px) rotateX(75deg) translateZ(0) translateY(0);
+  }
+  50% {
+    transform: perspective(300px) rotateX(75deg) translateZ(20px) translateY(-40px);
+  }
+}
+
+
+
+/* Enhanced Particles */
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(238, 249, 251, 0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
+  animation: particleFloat 15s linear infinite;
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0);
+    opacity: 0;
+  }
+  10% {
+    transform: translate3d(100px, -150px, 100px) scale(1);
+    opacity: 1;
+  }
+  90% {
+    transform: translate3d(300px, -450px, 200px) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(400px, -600px, 300px) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Depth Layers */
+.hire-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(ellipse at top, rgba(0, 0, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom, rgba(0, 0, 0, 0.1) 0%, transparent 50%);
+  z-index: 1;
+}
+
+/* Enhanced Container for Better 3D Context */
+.container {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  z-index: 3;
+  width: 100%;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}

@@ -1,0 +1,214 @@
+.Navbar {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 38vw;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.556);
+    border: 1px dashed #372b73;
+    border-radius: 50px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 25px rgba(102, 0, 255, 0.3),
+        0 0 50px rgba(1, 169, 192, 0.2);
+    -webkit-backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    z-index: 10;
+    transition: all 0.3s ease;
+    animation: pulse-glow 5s infinite ease-in-out;
+}
+
+/* Subtle pulsing glow effect */
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(127, 110, 208, 0.2), inset 0 0 10px rgba(140, 119, 243, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 35px rgba(171, 155, 251, 0.2), inset 0 0 15px rgba(160, 149, 214, 0.2);
+    }
+}
+
+/* Centered nav items */
+.Navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+.Navbar ul li {
+    color: #e3e6f7;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Animated underline and glow */
+.Navbar ul li::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(90deg, #00f7ff, #7300ff);
+    transform: translateX(-50%);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.Navbar ul li:hover {
+    color: #fff;
+    text-shadow: 0 0 10px #00f7ff, 0 0 20px #4000ff;
+}
+
+.Navbar ul li:hover::after {
+    width: 100%;
+}
+
+/* Glowing button on the right */
+.nav-btn {
+    background: transparent;
+    border: 1px dashed #00f7ff;
+    color: #00f7ff;
+    border-radius: 25px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 0 10px rgba(85, 0, 255, 0.2);
+}
+
+.nav-btn:hover {
+    background: rgba(0, 247, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(0, 247, 255, 0.4);
+    color: #fff;
+}
+
+/* Logo styling */
+.Navbar .logo {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px dashed rgba(0, 247, 255, 0.4);
+    box-shadow: 0 0 15px rgba(0, 247, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.Navbar .logo:hover {
+    transform: rotate(10deg) scale(1.05);
+    box-shadow: 0 0 25px rgba(0, 247, 255, 0.4);
+}
+/* === Responsive Navbar === */
+@media (max-width: 1024px) {
+  .Navbar {
+    width: 60vw;
+    padding: 0 25px;
+    height: 55px;
+  }
+
+  .Navbar ul {
+    gap: 25px;
+  }
+
+  .Navbar ul li {
+    font-size: 0.95rem;
+  }
+
+  .nav-btn {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .Navbar {
+    width: 80vw;
+    padding: 0 20px;
+    height: 55px;
+  }
+
+  .Navbar ul {
+    gap: 18px;
+  }
+
+  .Navbar ul li {
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+  }
+
+  .nav-btn {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+
+  .Navbar .logo {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .Navbar {
+    width: 90vw;
+    height: 50px;
+    top: 15px;
+    padding: 0 15px;
+    border-radius: 40px;
+  }
+
+  .Navbar ul {
+    gap: 12px;
+  }
+
+  .Navbar ul li {
+    font-size: 0.8rem;
+  }
+
+  .nav-btn {
+    display: none; /* Hide contact button to simplify layout */
+  }
+
+  .Navbar .logo {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Navbar {
+    width: 95vw;
+    height: 45px;
+    top: 10px;
+    padding: 0 10px;
+  }
+
+  .Navbar ul {
+    gap: 10px;
+  }
+
+  .Navbar ul li {
+    font-size: 0.75rem;
+  }
+
+  .Navbar .logo {
+    width: 32px;
+    height: 32px;
+  }
+}
