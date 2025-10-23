@@ -11,38 +11,35 @@ const Hire = () => {
   };
 
   const onSubmit = async (event) => {
-    event.preventDefault();
+  event.preventDefault();
 
-    // 🧩 Extract form data
-    const formData = new FormData(event.target);
-    const { name, email, subject, message } = Object.fromEntries(formData);
+  const formData = new FormData(event.target);
+  const { name, email, subject, message } = Object.fromEntries(formData);
 
-    try {
-      // 📨 Send POST request to backend API
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, subject, message }),
-      });
+  try {
+    // Use absolute path for Vercel
+    const response = await fetch("https://backend-portfolio-production-d8bd.up.railway.app/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, subject, message }),
+    });
 
-      const data = await response.json();
+    const data = await response.json();
 
-      if (response.ok) {
-        setStatusMessage("✅ Message sent! I’ll get back to you soon.");
-        setStatusType("success");
-        console.log("Success:", data);
-        event.target.reset(); // clear form fields
-      } else {
-        setStatusMessage("❌ Message failed to send. Please try again.");
-        setStatusType("error");
-        console.error("Server Error:", data);
-      }
-    } catch (error) {
-      setStatusMessage("⚠️ Could not connect to the server.");
+    if (response.ok) {
+      setStatusMessage("✅ Message sent! I'll get back to you soon.");
+      setStatusType("success");
+      event.target.reset();
+    } else {
+      setStatusMessage(`❌ ${data.error || "Message failed to send. Please try again."}`);
       setStatusType("error");
-      console.error("Network Error:", error);
     }
-  };
+  } catch (error) {
+    setStatusMessage("⚠️ Could not connect to the server. Please check your connection.");
+    setStatusType("error");
+    console.error("Network Error:", error);
+  }
+};
 
   return (
     <div className="hire-section">
