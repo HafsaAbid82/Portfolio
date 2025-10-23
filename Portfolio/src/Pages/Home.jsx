@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import Navbar from "../Navbar";
 import Scene from "../components/Scene";
 import Php from "../assets/php.png";
-import "./home.css";
+import "./Home.css";
 import Bkg from '../assets/bkg.gif'
 import Resume from '../assets/Resume.pdf'
 
